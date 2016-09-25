@@ -3,17 +3,19 @@ package com.cme.mm.rxandroiddemo.bean;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/9/7.
+ * Created by ChenME on 2016/9/7.
  */
 public interface StuApi {
 
-    interface  StudentsCallback{
-        void  onStudentsListGetOk(List<Student> students);
+    interface StudentsCallback {
+        void onStudentsListGetOk(List<Student> students);
+
         void onQueryFailed(Exception e);
     }
 
-    interface StoreCallback{
+    interface StoreCallback {
         void onStudentStored(String name);
+
         void onStoredFailed(Exception e);
     }
 
