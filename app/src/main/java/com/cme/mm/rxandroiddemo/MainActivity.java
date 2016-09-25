@@ -9,13 +9,11 @@ import rx.Observable;
 import rx.functions.Action1;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView tv_test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tv_test = (TextView) findViewById(R.id.tv_test);
         hello("Java", "iOS", "PHP");
     }
 
