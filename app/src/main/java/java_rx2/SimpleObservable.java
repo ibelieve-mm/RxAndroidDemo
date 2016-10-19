@@ -1,6 +1,5 @@
 package java_rx2;
 
-
 import java.util.Observable;
 
 /**

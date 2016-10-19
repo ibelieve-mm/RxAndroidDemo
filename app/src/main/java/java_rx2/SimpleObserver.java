@@ -12,6 +12,7 @@ import java.util.Observer;
  * Email：ibelieve1210@163.com
  */
 public class SimpleObserver implements Observer {
+
     public SimpleObserver(SimpleObservable observable) {
         observable.addObserver(this);
     }

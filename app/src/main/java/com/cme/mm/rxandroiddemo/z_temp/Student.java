@@ -1,4 +1,4 @@
-package com.cme.mm.rxandroiddemo.bean;
+package com.cme.mm.rxandroiddemo.z_temp;
 
 /**
  * Created by ChenME on 2016/9/7.
