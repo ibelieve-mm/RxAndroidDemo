@@ -1,7 +1,7 @@
 package com.cme.mm.rxandroiddemo.bean;
 
 /**
- * Created by Administrator on 2016/9/7.
+ * Created by ChenME on 2016/9/7.
  */
 public class Student implements Comparable<Student> {
 
