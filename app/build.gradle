@@ -1,16 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'//表达式语言的插件
 
-//task.withTraits(JavaCompile){
-//options.encoding="UTF-8"
-//}
+//配置控制台的编码格式
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
-
-//task.withType(org.gradle.api.tasks.compile.JavaCompile){
-//    options.encoding="UTF-8"
-//}
 
 android {
     compileSdkVersion 23
