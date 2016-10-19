@@ -1,7 +1,6 @@
 package com.cme.mm.rxandroiddemo.activity;
 
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.cme.mm.rxandroiddemo.App;
