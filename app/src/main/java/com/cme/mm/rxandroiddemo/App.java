@@ -64,6 +64,6 @@ public class App extends Application {
     public static void log(String msg) {
         String format = "yyyy-MM-dd HH:mm:ss";
         SimpleDateFormat sdf = new SimpleDateFormat(format);
-        Log.i("cme", sdf.format(new Date()) + " ~~~ " + msg);
+        Log.i("cme_log", sdf.format(new Date()) + " ~~~ " + msg);
     }
 }

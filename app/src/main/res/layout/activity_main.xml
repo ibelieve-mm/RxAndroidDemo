@@ -10,8 +10,44 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btn_test"
+        android:id="@+id/btn_createFunction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="create方法" />
+
+    <Button
+        android:id="@+id/btn_createFunction2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="create方法2" />
+
+    <Button
+        android:id="@+id/btn_fromFunction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="from 方法" />
+
+    <Button
+        android:id="@+id/btn_intervalFunction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="interval 方法" />
+
+    <Button
+        android:id="@+id/btn_justFunction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="just 方法" />
+
+    <Button
+        android:id="@+id/btn_rangeFunction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="range 方法" />
+
+    <Button
+        android:id="@+id/btn_filterFunction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="filter 方法" />
 </LinearLayout>
