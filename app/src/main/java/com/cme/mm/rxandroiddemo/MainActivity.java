@@ -10,6 +10,7 @@ import rx.functions.Action1;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tv_test;
+    private String baiduIconUrl="https://www.baidu.com/img/bd_logo1.png";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

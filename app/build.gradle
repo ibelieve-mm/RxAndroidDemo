@@ -1,4 +1,16 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'//表达式语言的插件
+
+//task.withTraits(JavaCompile){
+//options.encoding="UTF-8"
+//}
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+//task.withType(org.gradle.api.tasks.compile.JavaCompile){
+//    options.encoding="UTF-8"
+//}
 
 android {
     compileSdkVersion 23
@@ -16,6 +28,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+//    为了支持JDK1.8，能够使用表达式语言
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
