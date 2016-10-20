@@ -11,7 +11,7 @@ import rx.Observable;
 import rx.Subscriber;
 
 /**
- * Descriptions：
+ * Descriptions：下载的工具类
  * <p>
  * Author：ChenME
  * Date：10/20/2016
@@ -26,6 +26,7 @@ public class DownloadUtils {
 
     /**
      * 声明一个被观察者对象，作为结果返回
+     *
      * @param path
      * @return
      */

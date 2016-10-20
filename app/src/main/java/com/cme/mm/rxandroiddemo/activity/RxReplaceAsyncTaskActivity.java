@@ -2,7 +2,6 @@ package com.cme.mm.rxandroiddemo.activity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
@@ -15,7 +14,6 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -52,8 +50,7 @@ public class RxReplaceAsyncTaskActivity extends AppCompatActivity {
 
     @Click(R.id.btn_downloadImg)
     void downloadImg() {
-        utils.downloadImage(IMG_PATH).observeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<byte[]>() {
+        utils.downloadImage(IMG_PATH).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<byte[]>() {
             @Override
             public void onCompleted() {
                 App.log("Download——>onCompleted");//此处一般为关闭对话框

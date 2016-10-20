@@ -42,9 +42,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Click(R.id.btn_toRxReplaceAsyncTaskDownloadImgPage)
+    void toRxReplaceAsyncTaskDownloadImgPage() {
+        RxReplaceAsyncTaskActivity_.intent(this).start();
+    }
+
     @Click(R.id.btn_toRxReplaceAsyncTaskPage)
     void toRxReplaceAsyncTaskPage() {
-        RxReplaceAsyncTaskActivity_.intent(this).start();
+        RxReplaceAsyncTask2Activity_.intent(this).start();
     }
 
     /**
