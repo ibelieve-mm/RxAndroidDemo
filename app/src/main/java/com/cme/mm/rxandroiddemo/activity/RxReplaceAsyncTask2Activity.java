@@ -28,18 +28,11 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Descriptions：利用Rx替代AsyncTask
+ * Descriptions：利用Rx替代AsyncTask,登录(利用Rx和OKHttp)
  * <p>
  * Author：ChenME
  * Date：10/20/2016
  * Email：ibelieve1210@163.com
- * <p>
- * <p>
- * 在实际开发中Activity充当的角色太多，
- * 1. UI主线程负责绘制UI
- * 2. 开启子线程获取网络数据
- * 3. 赋值到控件中
- * 4. 逻辑判断等等
  */
 @EActivity(R.layout.activity_rx_replace_asynctask2)
 public class RxReplaceAsyncTask2Activity extends AppCompatActivity {
@@ -80,6 +73,10 @@ public class RxReplaceAsyncTask2Activity extends AppCompatActivity {
         String aes;
         try {
             aes = JsonUtils.aes(loginJson);
+            /**
+             * observeOn()表示Observable应该在哪个Scheduler(调度器)上执行任务
+             *subscribeOn()表示Observable将在哪个Scheduler上发送通知
+             */
             utils.login(LOGIN_PATH, aes).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<String>() {
                 @Override
                 public void onCompleted() {
