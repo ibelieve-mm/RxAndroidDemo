@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 调用create3
+     * 调用from()方法
      */
     @Click(R.id.btn_fromFunction)
     void fromFunction() {
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 调用create3
+     * 调用interval()方法
      */
     @Click(R.id.btn_intervalFunction)
     void intervalFunction() {
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 调用create3
+     * 调用just()方法
      */
     @Click(R.id.btn_justFunction)
     void justFunction() {
@@ -83,13 +83,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 调用create3
+     * 调用range()方法
      */
     @Click(R.id.btn_rangeFunction)
     void rangeFunction() {
         RxUtils.range();
-    }/**
-     * 调用create3
+    }
+
+    /**
+     * 调用调用filter()方法
      */
     @Click(R.id.btn_filterFunction)
     void filterFunction() {

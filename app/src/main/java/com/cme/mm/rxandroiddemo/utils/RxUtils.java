@@ -5,14 +5,13 @@ import com.cme.mm.rxandroiddemo.App;
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
-import rx.Observer;
 import rx.Subscriber;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
- * Descriptions：
+ * Descriptions：熟悉调用RxAndroid中常用的方法
  * <p>
  * Author：ChenME
  * Date：10/19/2016
@@ -20,10 +19,17 @@ import rx.schedulers.Schedulers;
  */
 public class RxUtils {
 
-//    private final String TAG = RxUtils.class.getSimpleName();
+    /**
+     * 模拟下载の方法
+     *
+     * @return
+     */
+    public static String downLoadJson() {
+        return "Json Data";
+    }
 
     /**
-     * 第一种方式
+     * 第一种方式（实际开发中最常用的）
      */
     public static void createObservable() {
         //定义被观察者
@@ -43,17 +49,17 @@ public class RxUtils {
         Subscriber<String> showSub = new Subscriber<String>() {
             @Override
             public void onCompleted() {
-                App.log("onCompleted");
+                App.log("创建方式1——>>" + "onCompleted");
             }
 
             @Override
             public void onError(Throwable e) {
-                App.log(e.getMessage());
+                App.log("创建方式1——>>" + e.getMessage());
             }
 
             @Override
             public void onNext(String s) {
-                App.log("输出结果-->>" + s);
+                App.log("创建方式1——>>" + s);
             }
         };
 
@@ -61,14 +67,6 @@ public class RxUtils {
         observable.subscribe(showSub);
     }
 
-    /**
-     * 调用下载方法
-     *
-     * @return
-     */
-    public static String downLoadJson() {
-        return "Json Data";
-    }
 
     /**
      * 第二种方式
@@ -87,23 +85,23 @@ public class RxUtils {
         }).subscribe(new Subscriber<Integer>() {
             @Override
             public void onCompleted() {
-                App.log("onCompleted");
+                App.log("创建方式2——>>" + "onCompleted");
             }
 
             @Override
             public void onError(Throwable e) {
-                App.log(e.getMessage());
+                App.log("创建方式2——>>" + e.getMessage());
             }
 
             @Override
             public void onNext(Integer integer) {
-                App.log("输出结果-->>" + integer);
+                App.log("创建方式2——>>" + integer);
             }
         });
     }
 
     /**
-     * 使用在被观察者返回的对象一般都是数组类型
+     * 使用在被观察者返回的对象一般都是数值类型
      */
     public static void from() {
         Integer[] items = {1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -111,7 +109,7 @@ public class RxUtils {
         observable.subscribe(new Action1() {
             @Override
             public void call(Object o) {
-                App.log(o.toString());
+                App.log("from——>>" + o.toString());
             }
         });
     }
@@ -125,7 +123,7 @@ public class RxUtils {
         observable.subscribe(new Action1() {
             @Override
             public void call(Object o) {
-                App.log(o.toString());
+                App.log("interval——>>" + o);
             }
         });
     }
@@ -140,18 +138,18 @@ public class RxUtils {
         observable.subscribe(new Subscriber<Integer[]>() {
             @Override
             public void onCompleted() {
-                App.log("onCompleted");
+                App.log("just——>>" + "onCompleted");
             }
 
             @Override
             public void onError(Throwable e) {
-                App.log(e.getMessage());
+                App.log("just——>>" + e.getMessage());
             }
 
             @Override
             public void onNext(Integer[] o) {
                 for (int i = 0; i < o.length; i++) {
-                    App.log("next:" + o[i]);
+                    App.log("just——>>" + o[i]);
                 }
             }
         });
@@ -161,21 +159,22 @@ public class RxUtils {
      * 指定输出数据的范围
      */
     public static void range() {
-        Observable observable = Observable.range(1, 40);
+        String[] arr = {"1.java", "2.OC", "3.c++", "4.JavaScript", "5.php", "6.C#"};
+        Observable observable = Observable.range(5, 3);
         observable.subscribe(new Subscriber<Integer>() {
             @Override
             public void onCompleted() {
-                App.log("onCompleted");
+                App.log("range——>>" + "onCompleted");
             }
 
             @Override
             public void onError(Throwable e) {
-                App.log(e.getMessage());
+                App.log("range——>>" + e.getMessage());
             }
 
             @Override
             public void onNext(Integer o) {
-                App.log("next:" + o);
+                App.log("range——>>" + o);
             }
         });
     }
@@ -193,17 +192,17 @@ public class RxUtils {
         }).observeOn(Schedulers.io()).subscribe(new Subscriber<Integer>() {
             @Override
             public void onCompleted() {
-                App.log("onCompleted");
+                App.log("filter——>>" + "onCompleted");
             }
 
             @Override
             public void onError(Throwable e) {
-                App.log(e.getMessage());
+                App.log("filter——>>" + e.getMessage());
             }
 
             @Override
             public void onNext(Integer o) {
-                App.log(o.toString());
+                App.log("filter——>>" + o.toString());
             }
         });
     }
