@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Click(R.id.btn_toRxReplaceAsyncTaskPage)
+    void toRxReplaceAsyncTaskPage() {
+        RxReplaceAsyncTaskActivity_.intent(this).start();
+    }
+
     /**
      * 调用create1
      */
