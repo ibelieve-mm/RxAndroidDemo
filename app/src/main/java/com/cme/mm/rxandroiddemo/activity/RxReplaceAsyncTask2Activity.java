@@ -1,17 +1,17 @@
 package com.cme.mm.rxandroiddemo.activity;
 
 import android.app.ProgressDialog;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.telephony.TelephonyManager;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.cme.mm.rxandroiddemo.App;
 import com.cme.mm.rxandroiddemo.R;
 import com.cme.mm.rxandroiddemo.bean.LoginBean;
-import com.cme.mm.rxandroiddemo.utils.DownloadUtils;
 import com.cme.mm.rxandroiddemo.utils.JsonUtils;
 import com.cme.mm.rxandroiddemo.utils.LoginUtils;
 
@@ -19,9 +19,6 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -44,10 +41,14 @@ import rx.schedulers.Schedulers;
 @EActivity(R.layout.activity_rx_replace_asynctask2)
 public class RxReplaceAsyncTask2Activity extends AppCompatActivity {
 
+    @ViewById(R.id.toolbar)
+    Toolbar toolbar;
+
     @ViewById(R.id.et_account)
     EditText et_account;
     @ViewById(R.id.et_pwd)
     EditText et_pwd;
+
 
     private ProgressDialog dialog;
 
@@ -57,9 +58,52 @@ public class RxReplaceAsyncTask2Activity extends AppCompatActivity {
 
     @AfterViews
     void onPageStart() {
+
+        toolbar.setLogo(R.mipmap.ic_launcher);
+        toolbar.setTitle("登录");
+        toolbar.setSubtitle("登录测试");
+        toolbar.setNavigationIcon(R.drawable.common_press_back);
+        /**
+         * 注意：
+         * 1. setTitle()方法必须放在setSupportActionBar()方法之前；
+         * 2. 所有的事件监听器必须放在setSupportActionBar()方法之后；
+         */
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        toolbar.setOnMenuItemClickListener(onMenuItemClick);
+
+
         dialog = new ProgressDialog(this);
         utils = new LoginUtils();
     }
+
+    private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem menuItem) {
+            String msg = "";
+            switch (menuItem.getItemId()) {
+                case R.id.action_edit:
+                    msg += "Click edit";
+                    break;
+                case R.id.action_share:
+                    msg += "Click share";
+                    break;
+                case R.id.action_settings:
+                    msg += "Click setting";
+                    break;
+            }
+
+            if(!msg.equals("")) {
+                App.toast(msg);
+            }
+            return true;
+        }
+    };
 
     private String getImei() {
         String imei = ((TelephonyManager) this.getSystemService(TELEPHONY_SERVICE)).getDeviceId();
@@ -102,5 +146,11 @@ public class RxReplaceAsyncTask2Activity extends AppCompatActivity {
         } catch (Exception e) {
             App.log("Json串加密出现异常~~" + e.toString());
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 }

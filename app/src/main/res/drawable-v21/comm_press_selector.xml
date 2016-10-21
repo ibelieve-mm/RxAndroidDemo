@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#88FFFFFF"><!--点击时波纹的颜色-->
+
+<!--未点击时控件的状态-->
+    <item android:state_pressed="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/colorBtnPressedBefore" />
+            <corners android:radius="@dimen/sizeCommBtnRadius" />
+        </shape>
+    </item>
+</ripple>

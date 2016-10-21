@@ -3,14 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+    </android.support.v7.widget.Toolbar>
+
 
     <TextView
         android:id="@+id/tv_accountLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/toolbar"
         android:text="账号：" />
 
     <EditText
@@ -46,6 +53,15 @@
         android:id="@+id/btn_commit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:background="@drawable/comm_press_selector"
+        android:layout_below="@id/tv_pwdLabel"
         android:text="提交数据" />
+    <Button
+        android:layout_below="@id/btn_commit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/comm_press_selector"
+        android:text="提交数据" />
+        <!--android:backgroundTint="@color/colorAccent"-->
+        <!--android:backgroundTintMode="screen"-->
 </RelativeLayout>
