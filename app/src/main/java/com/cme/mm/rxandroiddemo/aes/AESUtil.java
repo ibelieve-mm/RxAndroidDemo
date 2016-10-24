@@ -50,7 +50,6 @@ public class AESUtil {
     /*************************
      * 加密
      ******************************/
-
     public static byte[] encrypt(String sSrc, String sKey, int type)
             throws Exception {
         sKey = toMakekey(sKey, pwdLength, val);
@@ -228,6 +227,5 @@ public class AESUtil {
         String decrypt = en
                 .Decrypt("qDzB70yzx94Aqzyq7q4DqExox94Dyq7y7zy4yoxo4oy9q97yx1q9x94Ayy4FqByxxA41qAqzy9qoy7y14zzF41yD");
         System.out.println(decrypt);
-
     }
 }

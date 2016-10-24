@@ -487,5 +487,4 @@ public class Base64 {
 			outputStream.write(b, 0, len);
 		}
 	}
-
 }

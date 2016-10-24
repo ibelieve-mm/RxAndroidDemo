@@ -141,5 +141,4 @@ public class Base64OutputStream extends OutputStream {
 			buffer = 0;
 		}
 	}
-
 }
