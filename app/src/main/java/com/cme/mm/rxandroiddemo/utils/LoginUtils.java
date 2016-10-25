@@ -58,7 +58,6 @@ public class LoginUtils {
                             subscriber.onCompleted();
                         }
                     });
-
                 }
             }
         });
@@ -94,7 +93,6 @@ public class LoginUtils {
                             subscriber.onCompleted();
                         }
                     });
-
                 }
             }
         });

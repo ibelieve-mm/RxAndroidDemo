@@ -7,6 +7,7 @@ import android.widget.ImageView;
 
 import com.cme.mm.rxandroiddemo.App;
 import com.cme.mm.rxandroiddemo.R;
+import com.cme.mm.rxandroiddemo.constants.CommConstants;
 import com.cme.mm.rxandroiddemo.utils.DownloadUtils;
 
 import org.androidannotations.annotations.AfterViews;
@@ -39,7 +40,7 @@ public class RxReplaceAsyncTaskActivity extends AppCompatActivity {
     ImageView iv_showDownload;
 
 
-    private final String IMG_PATH = "http://f.hiphotos.baidu.com/image/h%3D200/sign=269538a28344ebf87271633fe9f8d736/2e2eb9389b504fc29897b1a4e1dde71191ef6d42.jpg";
+    private final String IMG_PATH = CommConstants.DEMO_SERVER + "cockleshell.jpg";
 
     private DownloadUtils utils;
 
@@ -59,12 +60,12 @@ public class RxReplaceAsyncTaskActivity extends AppCompatActivity {
             @Override
             public void onError(Throwable e) {
 
-                App.log("Download——>"+e.getMessage());
+                App.log("Download——>" + e.getMessage());
             }
 
             @Override
             public void onNext(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                 iv_showDownload.setImageBitmap(bitmap);
             }
         });

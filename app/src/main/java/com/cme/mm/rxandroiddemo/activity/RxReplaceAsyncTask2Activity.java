@@ -12,6 +12,7 @@ import android.widget.EditText;
 import com.cme.mm.rxandroiddemo.App;
 import com.cme.mm.rxandroiddemo.R;
 import com.cme.mm.rxandroiddemo.bean.LoginBean;
+import com.cme.mm.rxandroiddemo.constants.CommConstants;
 import com.cme.mm.rxandroiddemo.utils.JsonUtils;
 import com.cme.mm.rxandroiddemo.utils.LoginUtils;
 
@@ -19,6 +20,9 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -45,8 +49,7 @@ public class RxReplaceAsyncTask2Activity extends AppCompatActivity {
 
     private ProgressDialog dialog;
 
-    private final String LOGIN_PATH = "http://interface.wuliupai.cn/login";
-    //        private final String LOGIN_PATH = "http://192.168.1.13:8080/completemobilewlp/login";
+
     private LoginUtils utils;
 
     @AfterViews
@@ -91,7 +94,7 @@ public class RxReplaceAsyncTask2Activity extends AppCompatActivity {
                     break;
             }
 
-            if(!msg.equals("")) {
+            if (!msg.equals("")) {
                 App.toast(msg);
             }
             return true;
@@ -108,10 +111,44 @@ public class RxReplaceAsyncTask2Activity extends AppCompatActivity {
 
     @Click(R.id.btn_commit)
     void commit() {
-//        Map<String, String> params = new HashMap<>();
-//        params.put("userName", et_account.getText().toString());
-//        params.put("password", et_pwd.getText().toString());
+//        loginEmulator1();
+        loginEmulator2();
+    }
 
+    /**
+     * 直接登陆到服务器
+     */
+    private void loginEmulator2() {
+        Map<String, String> params = new HashMap<>();
+        String userName = et_account.getText().toString().trim();
+        String password = et_pwd.getText().toString().trim();
+        params.put("userName", userName);
+        params.put("password", password);
+        utils.login(CommConstants.DEMO_SERVER + "LoginAction", params).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                App.log("结果异常~~" + e.getMessage());
+            }
+
+            @Override
+            public void onNext(String s) {
+                dialog.show();
+                if (s != null) {
+                    App.log(s);
+                }
+            }
+        });
+    }
+
+    /**
+     * 将字符串加密后登陆
+     */
+    private void loginEmulator1() {
         LoginBean loginBean = new LoginBean(getImei());
         String loginJson = JsonUtils.createJsonString(loginBean);
         String aes;
@@ -119,9 +156,9 @@ public class RxReplaceAsyncTask2Activity extends AppCompatActivity {
             aes = JsonUtils.aes(loginJson);
             /**
              * observeOn()表示Observable应该在哪个Scheduler(调度器)上执行任务
-             *subscribeOn()表示Observable将在哪个Scheduler上发送通知
+             * subscribeOn()表示Observable将在哪个Scheduler上发送通知
              */
-            utils.login(LOGIN_PATH, aes).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<String>() {
+            utils.login(CommConstants.LOGIN_PATH + "login", aes).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<String>() {
                 @Override
                 public void onCompleted() {
                     dialog.dismiss();

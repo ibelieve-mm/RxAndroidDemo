@@ -56,12 +56,4 @@
         android:background="@drawable/comm_press_selector"
         android:layout_below="@id/tv_pwdLabel"
         android:text="提交数据" />
-    <Button
-        android:layout_below="@id/btn_commit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/comm_press_selector"
-        android:text="提交数据" />
-        <!--android:backgroundTint="@color/colorAccent"-->
-        <!--android:backgroundTintMode="screen"-->
 </RelativeLayout>
