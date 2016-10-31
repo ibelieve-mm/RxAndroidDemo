@@ -8,37 +8,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary">
-    </android.support.v7.widget.Toolbar>
+        android:background="@color/colorPrimary" />
 
-
-    <TextView
-        android:id="@+id/tv_accountLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="12dp"
         android:layout_below="@id/toolbar"
-        android:text="账号：" />
+        android:paddingRight="12dp">
 
-    <EditText
-        android:id="@+id/et_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tv_accountLabel"
-        android:layout_alignBottom="@+id/tv_accountLabel"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/tv_accountLabel"
-        android:hint="user name"
-        android:inputType="textPersonName" />
 
-    <TextView
-        android:id="@+id/tv_pwdLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_accountLabel"
-        android:layout_marginTop="53dp"
-        android:text="密码：" />
-
+<<<<<<< HEAD
     <EditText
         android:id="@+id/et_pwd"
         android:layout_width="wrap_content"
@@ -67,4 +47,54 @@
         android:textSize="14sp"
         android:textColor="#333"
         android:id="@+id/tv_requestResult"/>
+=======
+        <TextView
+            android:id="@+id/tv_accountLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="账号：" />
+
+        <EditText
+            android:id="@+id/et_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_accountLabel"
+            android:layout_alignBottom="@+id/tv_accountLabel"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/tv_accountLabel"
+            android:hint="user name"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/tv_pwdLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_accountLabel"
+            android:layout_marginTop="15dp"
+            android:text="密码：" />
+
+        <EditText
+            android:id="@+id/et_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_pwdLabel"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/tv_pwdLabel"
+            android:hint="password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btn_commit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_pwdLabel"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/comm_press_selector"
+            android:text="提交数据" />
+    </RelativeLayout>
+>>>>>>> dcdcebd0ca941aa6ceb3c60514f5a06650e2bd0f
 </RelativeLayout>
