@@ -8,10 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.cme.mm.rxandroiddemo.App;
 import com.cme.mm.rxandroiddemo.R;
 import com.cme.mm.rxandroiddemo.bean.LoginBean;
+import com.cme.mm.rxandroiddemo.bean.LoginBeanMine;
 import com.cme.mm.rxandroiddemo.constants.CommConstants;
 import com.cme.mm.rxandroiddemo.utils.JsonUtils;
 import com.cme.mm.rxandroiddemo.utils.LoginUtils;
@@ -45,6 +47,9 @@ public class RxReplaceAsyncTask2Activity extends AppCompatActivity {
     EditText et_account;
     @ViewById(R.id.et_pwd)
     EditText et_pwd;
+
+    @ViewById(R.id.tv_requestResult)
+    TextView tv_requestResult;
 
 
     private ProgressDialog dialog;
@@ -111,8 +116,8 @@ public class RxReplaceAsyncTask2Activity extends AppCompatActivity {
 
     @Click(R.id.btn_commit)
     void commit() {
-//        loginEmulator1();
-        loginEmulator2();
+        loginEmulator1();
+//        loginEmulator2();
     }
 
     /**
@@ -149,16 +154,22 @@ public class RxReplaceAsyncTask2Activity extends AppCompatActivity {
      * 将字符串加密后登陆
      */
     private void loginEmulator1() {
-        LoginBean loginBean = new LoginBean(getImei());
+//        LoginBean loginBean = new LoginBean(getImei());
+
+        LoginBeanMine loginBean = new LoginBeanMine(et_account.getText().toString().trim(), et_pwd.getText().toString().trim());
+
         String loginJson = JsonUtils.createJsonString(loginBean);
         String aes;
         try {
             aes = JsonUtils.aes(loginJson);
+
+            App.log("加密后~~"+aes);
             /**
              * observeOn()表示Observable应该在哪个Scheduler(调度器)上执行任务
              * subscribeOn()表示Observable将在哪个Scheduler上发送通知
              */
-            utils.login(CommConstants.LOGIN_PATH + "login", aes).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<String>() {
+            utils.login(CommConstants.DEMO_SERVER + "LoginAction", aes).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<String>() {
+                //            utils.login(CommConstants.LOGIN_PATH + "login", aes).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<String>() {
                 @Override
                 public void onCompleted() {
                     dialog.dismiss();
@@ -174,6 +185,7 @@ public class RxReplaceAsyncTask2Activity extends AppCompatActivity {
                     dialog.show();
                     if (s != null) {
                         App.log(s);
+                        tv_requestResult.setText(s);
                     }
                 }
             });

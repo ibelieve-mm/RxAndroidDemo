@@ -52,8 +52,19 @@
     <Button
         android:id="@+id/btn_commit"
         android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
         android:background="@drawable/comm_press_selector"
         android:layout_below="@id/tv_pwdLabel"
         android:text="提交数据" />
+
+    <TextView
+        android:layout_below="@id/btn_commit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textColor="#333"
+        android:id="@+id/tv_requestResult"/>
 </RelativeLayout>

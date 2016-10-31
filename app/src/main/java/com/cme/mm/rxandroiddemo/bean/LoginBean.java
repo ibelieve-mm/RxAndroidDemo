@@ -1,7 +1,7 @@
 package com.cme.mm.rxandroiddemo.bean;
 
 /**
- * Descriptions：登录的实体类
+ * Descriptions：登录的实体类（物流派）
  * <p>
  * Author：ChenME
  * Date：10/20/2016
